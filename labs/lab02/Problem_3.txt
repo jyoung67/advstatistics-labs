@@ -1,0 +1,53 @@
+remove(list=objects())
+prob <- 0.5
+myVals <- rbinom(1000, 10000, prob)
+p_values <- vector(length = length(myVals))
+cnt <- 1
+for(value in myVals)
+{
+	p_values[cnt] <- binom.test(value, 10000, p=prob, alternative="two.sided")$p.value
+        cnt <- cnt + 1
+}
+hist(p_values)
+
+remove(list=objects())
+n <- 10000
+prob <- 0.5
+plot(0:n, dbinom(0:n, n, p=prob))
+
+b_var <- function(n,p){ n*p*(1-p)}
+
+
+length(p_values[p_values > 0.05])
+
+# ********************** Problem 3D
+
+remove(list=objects())
+prob <- 0.1
+myVals <- rbinom(1000, 10000, prob)
+p_values <- vector(length = length(myVals))
+cnt <- 1
+for(value in myVals)
+{
+	p_values[cnt] <- binom.test(value, 10000, p=prob, alternative="two.sided")$p.value
+        cnt <- cnt + 1
+}
+hist(p_values, main="p_values with prob = 0.1")
+
+
+remove(list=objects())
+prob <- 0.9
+myVals <- rbinom(1000, 10000, prob)
+p_values <- vector(length = length(myVals))
+cnt <- 1
+for(value in myVals)
+{
+	p_values[cnt] <- binom.test(value, 10000, p=prob, alternative="two.sided")$p.value
+        cnt <- cnt + 1
+}
+hist(p_values, main="p_values with prob = 0.9")
+
+
+plot(0:10000, dbinom(0:10000, 10000, p=0.1))
+plot(0:10000, dbinom(0:10000, 10000, p=0.9))
+
