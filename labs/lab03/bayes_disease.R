@@ -8,4 +8,5 @@ bayes_disease <- function(runs)
   emits <- replicate(runs, sample(c(1,2), 1, replace = TRUE, prob= c(df[2,1], df[2,2])))
   print(emits)
   result <- run_bayes_sim(prior, df, emits)
+  print(which(result[,2] >= 0.9999)[1])
 }
