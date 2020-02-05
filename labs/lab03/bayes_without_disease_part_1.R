@@ -18,7 +18,7 @@ bayes_without_disease_part_1 <- function(maxEmitLength, iterations)
       currentRun[j] <- result[length(result[,2]), 2]
     }
     meanPostValues[i] <- mean(currentRun)
-    powerValues[i] <- length(currentRun[currentRun >= 0.9999])/iterations
+    powerValues[i] <- sum(currentRun >= 0.9999)/iterations
   }
   
   plot(1:length(powerValues), powerValues, main = "Patient without Disease", xlab = "num of tests", ylab = "power value", xlim=c(1, maxEmitLength),ylim = c(0,1))
