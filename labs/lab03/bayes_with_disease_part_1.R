@@ -25,9 +25,8 @@ bayes_with_disease_part_1 <- function(maxEmitLength, iterations)
   abline(h = 0.95)
   text(7, .98, "power = 0.95")
   
-  write.csv(powerValues, row.names = F, file = "/Users/young/Documents/GitHub/advstatistics-labs/labs/lab03/power_values_part_1.csv")
-  write.csv(meanPostValues, row.names = F, file = "/Users/young/Documents/GitHub/advstatistics-labs/labs/lab03/mean_posterior_values_part_1.csv")
-  # datafrm <- read.csv("/Users/young/Documents/GitHub/advstatistics-labs/labs/lab03/power_values_part_1.csv"")
+  # write.csv(powerValues, row.names = F, file = "/Users/young/Documents/GitHub/advstatistics-labs/labs/lab03/power_values_part_1.csv")
+  # write.csv(meanPostValues, row.names = F, file = "/Users/young/Documents/GitHub/advstatistics-labs/labs/lab03/mean_posterior_values_part_1.csv")
   
   return(data.frame(meanPostValues, powerValues))
 }

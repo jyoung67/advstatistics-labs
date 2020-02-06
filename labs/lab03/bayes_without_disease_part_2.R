@@ -1,7 +1,7 @@
 bayes_without_disease_part_2 <- function(maxEmitLength, iterations) 
 {
   # Example Function Call
-  # result <- bayes_with_disease_part_2(maxEmitLength=40, iterations=1000)
+  # result <- bayes_without_disease_part_2(maxEmitLength=40, iterations=1000)
   
   meanPostValues <- vector(mode = "numeric", length = maxEmitLength)
   powerValues <- vector(mode = "numeric", length = maxEmitLength)
@@ -21,13 +21,12 @@ bayes_without_disease_part_2 <- function(maxEmitLength, iterations)
     powerValues[i] <- sum(currentRun >= 0.9999)/iterations
   }
   
-  plot(1:length(powerValues), powerValues, main = "Patient with Disease", xlab = "num of tests", ylab = "power value", xlim=c(1, maxEmitLength),ylim = c(0,1))
+  plot(1:length(powerValues), powerValues, main = "Patient without Disease", xlab = "num of tests", ylab = "power value", xlim=c(1, maxEmitLength),ylim = c(0,1))
   abline(h = 0.95)
-  text(7, .98, "power = 0.95")
+  text(10, .91, "power = 0.95")
   
-  write.csv(powerValues, row.names = F, file = "/Users/young/Documents/GitHub/advstatistics-labs/labs/lab03/power_values_with_disease_part_2.csv")
-  write.csv(meanPostValues, row.names = F, file = "/Users/young/Documents/GitHub/advstatistics-labs/labs/lab03/mean_posterior_values_with_disease_part_2.csv")
-  # datafrm <- read.csv("/Users/young/Documents/GitHub/advstatistics-labs/labs/lab03/power_values_part_1.csv"")
+  # write.csv(powerValues, row.names = F, file = "/Users/young/Documents/GitHub/advstatistics-labs/labs/lab03/power_values_without_disease_part_2.csv")
+  # write.csv(meanPostValues, row.names = F, file = "/Users/young/Documents/GitHub/advstatistics-labs/labs/lab03/mean_posterior_values_without_disease_part_2.csv")
   
   return(data.frame(meanPostValues, powerValues))
 }
