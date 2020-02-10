@@ -13,7 +13,7 @@ bayes_without_disease_part_2 <- function(maxEmitLength, iterations)
     currentRun <- vector(mode = "numeric", length = iterations)
     for(j in 1:iterations)
     {
-      emits <- replicate(i, sample(c(1,2), 1, replace = TRUE, prob= c(df[2,1], df[2,2])))
+      emits <- replicate(i, sample(c(1,2), 1, replace = TRUE, prob= c(df[1,2], df[2,2])))
       result <- run_bayes_sim(prior, df, emits)
       currentRun[j] <- result[length(result[,2]), 2]
     }

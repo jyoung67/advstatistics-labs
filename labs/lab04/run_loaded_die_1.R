@@ -1,19 +1,19 @@
-bayes_with_disease_part_1 <- function(maxEmitLength, iterations) 
+run_loaded_die_1 <- function(maxEmitLength, iterations) 
 {
   # Example Function Call
-  # result <- bayes_with_disease_part_1(maxEmitLength=40, iterations=1000)
+  # result <- run_loaded_die_1(maxEmitLength=40, iterations=1000)
   
   meanPostValues <- vector(mode = "numeric", length = maxEmitLength)
   powerValues <- vector(mode = "numeric", length = maxEmitLength)
-  df <- data.frame(c(0.91, 0.09), c(0.16, 0.84))
-  prior <- c(0.001, 0.999)
+  df <- data.frame(c(0.1,0.1,0.1,0.1,0.1,0.5), c(1/6,1/6,1/6,1/6,1/6,1/6))
+  prior <- c(0.01, 0.99)
   
   for(i in 1:maxEmitLength)
   {
     currentRun <- vector(mode = "numeric", length = iterations)
     for(j in 1:iterations)
     {
-      emits <- replicate(i, sample(c(1,2), 1, replace = TRUE, prob= c(df[1,1], df[2,1])))
+      emits <- replicate(i, sample(c(1,2,3,4,5,6), 1, replace = TRUE, prob= c(df[1,1], df[1,2], df[1,3], df[1,4],df[1,5], df[1,6])))
       result <- run_bayes_sim(prior, df, emits)
       currentRun[j] <- result[length(result[,1]), 1]
     }

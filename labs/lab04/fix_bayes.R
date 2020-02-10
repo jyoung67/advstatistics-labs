@@ -1,7 +1,7 @@
-bayes_with_disease_part_1 <- function(maxEmitLength, iterations) 
+fix_bayes <- function(maxEmitLength, iterations) 
 {
   # Example Function Call
-  # result <- bayes_with_disease_part_1(maxEmitLength=40, iterations=1000)
+  # result <- fix_bayes(maxEmitLength=40, iterations=1000)
   
   meanPostValues <- vector(mode = "numeric", length = maxEmitLength)
   powerValues <- vector(mode = "numeric", length = maxEmitLength)
@@ -13,7 +13,7 @@ bayes_with_disease_part_1 <- function(maxEmitLength, iterations)
     currentRun <- vector(mode = "numeric", length = iterations)
     for(j in 1:iterations)
     {
-      emits <- replicate(i, sample(c(1,2), 1, replace = TRUE, prob= c(df[1,1], df[1,2])))
+      emits <- replicate(i, sample(c(1,2), 1, replace = TRUE, prob= c(df[1,1], df[2,1])))
       result <- run_bayes_sim(prior, df, emits)
       currentRun[j] <- result[length(result[,1]), 1]
     }
