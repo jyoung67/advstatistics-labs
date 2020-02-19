@@ -1,4 +1,4 @@
-runMetropolis <- function(iterations, initialValue, a, b)
+runMetropolis <- function(iterations, initialValue, alpha, beta)
 {
   target <- function(x, a, b){ifelse((x >= 0) & (x <= 1), (dexp(x, rate=5)/0.9932621) * dbinom(a,b,prob = x), 0)}
   
@@ -8,8 +8,8 @@ runMetropolis <- function(iterations, initialValue, a, b)
     {
       current_x = xvect[i-1]
       proposed_x = current_x + rnorm(1,0, sd=0.01)
-      ratio = target(proposed_x, a, b)/target(current_x, a, b)
-      if(runif(1) > ratio)
+      ratio = target(proposed_x, alpha, beta)/target(current_x, alpha, beta)
+      if(runif(1) < ratio)
       {
         x[i] = proposed
       }
@@ -17,7 +17,6 @@ runMetropolis <- function(iterations, initialValue, a, b)
       {
         x[i] = current
       }
-      
     }
   return (target)
 }
