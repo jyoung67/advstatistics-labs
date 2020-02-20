@@ -1,16 +1,17 @@
-runMetropolisTest <- function(iterations, initialValue, numSuccess, totalNum)
+runMetropolisTest <- function(iterations, initialValue, numHeads, numTails)
 {
-  # result <- runMetropolisTest(iterations = 10000, initialValue=0.5, numSuccess=14, totalNum=24)
-  target <- function(x, a, b){ifelse((x >= 0) & (x <= 1), (dexp(x, rate=5)/0.9932621) * dbinom(a,b,prob = x), 0)}
-  
+  # Example function call
+  # runMetropolisTest(iterations = 10000, initialValue=0.5, numHeads=14, numTails=24)
+  # runMetropolisTest(iterations = 1000000, initialValue=0.5, numHeads=583, numTails=417)
+  target <- function(x, a, b){ifelse((x >= 0) & (x <= 1), (dexp(x, rate=5)/0.9932621) * dbinom(a,a+b,prob = x), 0)}
   
   xvect <- vector(length = iterations, mode = "numeric")
   xvect[1] = initialValue
     for(i in 2:iterations)
     {
       current_x = xvect[i-1]
-      proposed_x = current_x + rnorm(1,0, sd=0.001)
-      ratio = target(proposed_x, numSuccess, totalNum)/target(current_x, numSuccess, totalNum)
+      proposed_x = current_x + rnorm(n = 1,mean = 0, sd=0.01)
+      ratio = target(proposed_x, numHeads, numTails)/target(current_x, numHeads, numTails)
       if(runif(1) < ratio)
       {
         xvect[i] = proposed_x
@@ -20,12 +21,11 @@ runMetropolisTest <- function(iterations, initialValue, numSuccess, totalNum)
         xvect[i] = current_x
       }
     }
-  return (xvect)
+  
+  myHist <- hist(xvect, breaks = 200, plot=FALSE)
+  plot(myHist$mids, myHist$counts/iterations, main = paste("num of heads =", numHeads, "/", "num of tails =", numTails))
+  expSum <- sum(target(myHist$mids, numHeads, numTails))
+  lines(myHist$mids, target(myHist$mids, numHeads, numTails)/expSum, col="red")
+  dbetasum <- sum(dbeta(myHist$mids, 40+numHeads, 40+numTails))
+  lines(myHist$mids, dbeta(myHist$mids, 40+numHeads, 40+numTails)/dbetasum, col="blue")
 }
-
-target <- function(x, a, b){ifelse((x >= 0) & (x <= 1), (dexp(x, rate=5)/0.9932621) * dbinom(a,b,prob = x), 0)}
-result <- runMetropolis(iterations = 1000000, initialValue=0.5, numSuccess=14, totalNum=24)
-myHist <- hist(result, breaks = 200, plot=FALSE)
-plot(myHist$mids, myHist$counts/length(result))
-expSum <- sum(target(myHist$mids, 14, 24))
-lines(myHist$mids, target(myHist$mids, 14, 24)/expSum, col="red")
