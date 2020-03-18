@@ -25,7 +25,13 @@ createDataset <- function()
   threshold <- 0.05
   default_result <- sum(pValues <= threshold)
   Bonferroni_result <- sum(pValues <= threshold/numRows)
-  BHFDR_result <- sum(((numRows*pValues)/order(pValues)) <= threshold)
+  adjustedThresholds <- (rank(pValues)/numRows) * threshold
+  # equivalent to:  p.adjust(result, method = "BH")
+  BHFDR_result <- sum(pValues <= adjustedThresholds)
+  #BHFDR_result <- sum(((numRows*pValues)/order(pValues)) <= threshold)
+  
+  
+ 
 
   print(paste("Default threshold:  # of significant values:", default_result))
   print(paste("Bonferroni adjusted threshold:  # of significant values:", Bonferroni_result))
