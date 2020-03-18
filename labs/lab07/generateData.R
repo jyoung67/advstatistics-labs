@@ -4,7 +4,6 @@ generateData <- function()
   len <- length(probs)
   numOfWins <- 0:7
   
-  
   result <- matrix(nrow=len, ncol=length(numOfWins))
   
   for(i in 1:len)
@@ -15,11 +14,9 @@ generateData <- function()
   
   expected_values_interim <- sweep(result, MARGIN=2, c(1.45, 1.72, 2.24, 2.76, 3.55, 4.60, 5.65, 6.75), `*`)
   expectedValues <- apply(expected_values_interim,1,sum)
-  
-  
-  plot(probs, expectedValues, main = "Expected Tournament Payoff", xlab = "probability of failure", ylab = "expected payoff ($)")
+  plot(probs, expectedValues, main = "Expected Tournament Payoff", xlab = "probability of failure", ylab = "expected value payoff ($)", ylim = c(0,7))
+  axis(side = 2, at = seq(0,7,1))
+  axis(side = 1, at = seq(0.0, 1.0, 0.1))
   abline(h=3.75, col="red")
   text(0.1, 3.8, "$3.75")
-  
-  return(expectedValues)
 }

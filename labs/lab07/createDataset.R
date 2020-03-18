@@ -30,4 +30,6 @@ createDataset <- function()
   print(paste("Default threshold:  # of significant values:", default_result))
   print(paste("Bonferroni adjusted threshold:  # of significant values:", Bonferroni_result))
   print(paste("BH FDR adjusted threshold:  # of significant values:", BHFDR_result))
+  
+  return (pValues)
 }
