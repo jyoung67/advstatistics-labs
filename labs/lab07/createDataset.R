@@ -22,20 +22,23 @@ createDataset <- function()
     pValues[i] <- t.test(mat[i, 1:10], mat[i, 11:20])$p.value
   }
   
+  # Test only
+  #pValues <- c(0.0001, 0.0004, 0.0019, 0.0095, 0.0201, 0.0278, 0.0298, 
+              # 0.0344, 0.0459, 0.3240, 0.4262, 0.5719, 0.6528, 0.7590, 1.000)
+  #numRows <- length(pValues)
+  
   threshold <- 0.05
   default_result <- sum(pValues <= threshold)
+  # equivalent to:  p.adjust(pValues, method =  "bonferroni")
   Bonferroni_result <- sum(pValues <= threshold/numRows)
-  adjustedThresholds <- (rank(pValues)/numRows) * threshold
-  # equivalent to:  p.adjust(result, method = "BH")
-  BHFDR_result <- sum(pValues <= adjustedThresholds)
-  #BHFDR_result <- sum(((numRows*pValues)/order(pValues)) <= threshold)
-  
-  
  
+  # equivalent to:  p.adjust(pValues, method = "BH")
+  adjustedPValues <- ((numRows*pValues)/rank(pValues))
+  BHFDR_result <- sum(adjustedPValues <= threshold)
 
   print(paste("Default threshold:  # of significant values:", default_result))
   print(paste("Bonferroni adjusted threshold:  # of significant values:", Bonferroni_result))
   print(paste("BH FDR adjusted threshold:  # of significant values:", BHFDR_result))
   
-  return (pValues)
+  return (data.frame(raw=pValues, adjusted=adjustedPValues))
 }
