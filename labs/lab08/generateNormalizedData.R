@@ -14,22 +14,22 @@ generateNormalizedData <- function()
   
   getSigGeneCount_Raw <- function(p_2_12, p_2_20, p_12_20, threshold)
   {
-    print(paste("Raw Pvalues_2_12:", sum(p_2_12 <= threshold)))
-    print(paste("Raw Pvalues_2_20:", sum(p_2_20 <= threshold)))
-    print(paste("Raw Pvalues_12_20:", sum(p_12_20 <= threshold)))
+    print(paste("Raw Pvalues_2_12:", sum(p_2_12 < threshold)))
+    print(paste("Raw Pvalues_2_20:", sum(p_2_20 < threshold)))
+    print(paste("Raw Pvalues_12_20:", sum(p_12_20 < threshold)))
   }
   getSigGeneCount_Bonf <- function(p_2_12, p_2_20, p_12_20, threshold)
   {
-    print(paste("BONF Pvalues_2_12:", sum(p.adjust(p_2_12, method =  "bonferroni") <= threshold)))
-    print(paste("BONF Pvalues_2_20:", sum(p.adjust(p_2_20, method =  "bonferroni") <= threshold)))
-    print(paste("BONF Pvalues_12_20:", sum(p.adjust(p_12_20, method =  "bonferroni") <= threshold)))
+    print(paste("BONF Pvalues_2_12:", sum(p.adjust(p_2_12, method =  "bonferroni") < threshold)))
+    print(paste("BONF Pvalues_2_20:", sum(p.adjust(p_2_20, method =  "bonferroni") < threshold)))
+    print(paste("BONF Pvalues_12_20:", sum(p.adjust(p_12_20, method =  "bonferroni") < threshold)))
   }
   
   getSigGeneCount_Bh <- function(p_2_12, p_2_20, p_12_20, threshold)
   {
-    print(paste("BH Pvalues_2_12:", sum(p.adjust(p_2_12, method =  "BH") <= threshold)))
-    print(paste("BH Pvalues_2_20:", sum(p.adjust(p_2_20, method =  "BH") <= threshold)))
-    print(paste("BH Pvalues_12_20:", sum(p.adjust(p_12_20, method =  "BH") <= threshold)))
+    print(paste("BH Pvalues_2_12:", sum(p.adjust(p_2_12, method =  "BH") < threshold)))
+    print(paste("BH Pvalues_2_20:", sum(p.adjust(p_2_20, method =  "BH") < threshold)))
+    print(paste("BH Pvalues_12_20:", sum(p.adjust(p_12_20, method =  "BH") < threshold)))
   }
   
   raw_pvalues_2_12 <- vector(mode = "numeric", length = nrow(myTNorm))
@@ -58,9 +58,9 @@ generateNormalizedData <- function()
   getSigGeneCount_Bh(raw_pvalues_2_12, raw_pvalues_2_20, raw_pvalues_12_20, threshold)
   
   # Plot histograms
-  hist(raw_pvalues_2_12, breaks = 50, xlab = "p-values", main = "P-values (Day 2/Week 12")
+  hist(raw_pvalues_2_12, breaks = 50, xlab = "p-values", main = "P-values (Day 2/Week 12", ylim = c(0,200))
   hist(raw_pvalues_2_20, breaks = 50, xlab = "p-values", main = "P-values (Day 2/Week 20")
-  hist(raw_pvalues_12_20, breaks = 50, xlab = "p-values", main = "P-values (Week 12/Week 20")
+  hist(raw_pvalues_12_20, breaks = 50, xlab = "p-values", main = "P-values (Week 12/Week 20", ylim=c(0,500))
   
   return (data.frame(raw_pvalues_2_12, raw_pvalues_2_20, raw_pvalues_12_20))
 }
