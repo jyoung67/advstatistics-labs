@@ -3,6 +3,13 @@ generateNormalizedData <- function()
   myT<-read.table("/Users/young/Documents/GitHub/advstatistics-labs/labs/lab08/nc101_scaff_dataCounts.txt",sep="\t",header=TRUE,row.names=1)
   myT <- myT[ apply( myT,1, median)> 5,]
   myTNorm <- myT
+  
+  for ( i in 1:ncol(myT))
+  {
+    colSum = sum(myT[,i])
+    myTNorm[,i] =myTNorm[,i]/colSum
+  }
+  
   threshold <- 0.05
   
   getSigGeneCount_Raw <- function(p_2_12, p_2_20, p_12_20, threshold)
@@ -25,11 +32,6 @@ generateNormalizedData <- function()
     print(paste("BH Pvalues_12_20:", sum(p.adjust(p_12_20, method =  "BH") <= threshold)))
   }
   
-  for ( i in 1:ncol(myT))
-  {
-    colSum = sum(myT[,i])
-    myTNorm[,i] =myTNorm[,i]/colSum
-  }
   raw_pvalues_2_12 <- vector(mode = "numeric", length = nrow(myTNorm))
   raw_pvalues_2_20 <- vector(mode = "numeric", length = nrow(myTNorm))
   raw_pvalues_12_20 <- vector(mode = "numeric", length = nrow(myTNorm))
