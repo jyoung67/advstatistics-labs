@@ -25,5 +25,4 @@ processCancerRisk <- function()
   abline(lmodel, col="red")
   plot(lmodel)
   summary(lmodel)
-  
 }
