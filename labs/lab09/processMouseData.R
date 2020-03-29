@@ -34,8 +34,9 @@ processMouseData <- function()
   # Bonferroni method
   Bonferroni_result <- sum(pValues <= threshold/numRows)
   # BH/FDR method
-  adjustedPValues <- ((numRows*pValues)/rank(pValues))
-  BHFDR_result <- sum(adjustedPValues <= threshold)
+  sortedPValues <- sort(pValues)
+  vals <- sortedPValues <= (rank(sortedPValues)/length(sortedPValues)) * threshold
+  BHFDR_result <- ifelse(length(which(vals == TRUE)) == 0 , 0, max(which(vals == TRUE) ) )
   
   print(paste("Default threshold:  # of significant values:", default_result))
   print(paste("Bonferroni adjusted threshold:  # of significant values:", Bonferroni_result))
