@@ -24,5 +24,5 @@ processCancerRisk <- function()
   text(log10(Lifetime_cancer_risk)~log10(CumulativeCellDivisions), labels=nums,data=df, font=8)  
   abline(lmodel, col="red")
   plot(lmodel)
-  summary(lmodel)
+  print(summary(lmodel))
 }
