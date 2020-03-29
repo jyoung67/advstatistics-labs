@@ -1,22 +1,48 @@
 processMouseData <- function()
 {
   setwd("/Users/young/Documents/GitHub/advstatistics-labs/labs/lab09/")
+  # Retrieve data
   bmiData <- read.table("BMI_Data.txt", header = TRUE, sep="\t")
-  # nrow = 71
   caseData <- read.table("caseControlData.txt", header = TRUE, sep="\t")
   caseData$bmi <- -1
+  
+  # Map BMI value to study Id
   for (i in 1:nrow(caseData))
   {
     key <- strsplit(levels(caseData$sample)[i], "_")[[1]][1]
     idx <- which(bmiData$studyid == key)
     caseData$bmi[i] <- bmiData$bmi[idx]
   }
-  
+
   # Remove rows with value = 'NA'
   caseData <- caseData[!is.na(caseData$bmi),]
   
-  caseData <- 
+  numCols <- ncol(caseData)
+  numRows <- nrow(caseData)
+  threshold <- 0.10
+  pValues <- vector(mode = "numeric", length = (numCols - 2))
   
-  return (caseData)
+  # Retrieve pvalues
+  for(i in 2:(numCols-1))
+  {
+    myLinearModel <- lm(caseData$bmi~caseData[,i])
+    pValues[i-1] <- anova(myLinearModel)$"Pr(>F)"[1]
+  }
   
+  # Default method
+  default_result <- sum(pValues <= threshold)
+  # Bonferroni method
+  Bonferroni_result <- sum(pValues <= threshold/numRows)
+  # BH/FDR method
+  adjustedPValues <- ((numRows*pValues)/rank(pValues))
+  BHFDR_result <- sum(adjustedPValues <= threshold)
+  
+  print(paste("Default threshold:  # of significant values:", default_result))
+  print(paste("Bonferroni adjusted threshold:  # of significant values:", Bonferroni_result))
+  print(paste("BH FDR adjusted threshold:  # of significant values:", BHFDR_result))
+  
+  # Generate histogram of pvalues
+  hist(pValues, xlab="p-value", main = "Linear Model P-Values", breaks=50)
+  
+  return (pValues)
 }
