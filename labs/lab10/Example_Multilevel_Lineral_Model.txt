@@ -1,0 +1,10 @@
+hsb2 <- read.csv("https://stats.idre.ucla.edu/stat/data/hsb2.csv")
+hsb2$race.f <- factor(hsb2$race)
+lModel <- lm(write ~ race.f, data=hsb2, x=TRUE)
+summary(lModel)
+
+# Output matrix model
+lModel$x
+
+# Generate reference vector from matrix model
+lModel$coefficients[1]*lModel$x[,1] + lModel$coefficients[2]*lModel$x[,2] + lModel$coefficients[3]*lModel$x[,3] + lModel$coefficients[4]*lModel$x[,4] + lModel$residuals
