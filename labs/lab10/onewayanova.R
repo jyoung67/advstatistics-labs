@@ -1,6 +1,5 @@
 onewayanova <- function(threshold=0.05)
 {
-  threshold <- 0.05
   myT<-read.table("/Users/young/Documents/GitHub/advstatistics-labs/labs/lab10/nc101_scaff_dataCounts.txt",sep="\t",header=TRUE,row.names=1)
   myT <- myT[ apply( myT,1, median)> 5,]
   myTNorm <- myT
