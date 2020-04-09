@@ -1,4 +1,4 @@
-onewayanova <- function(threshold=0.05)
+mixedanova <- function(threshold=0.05)
 {
   threshold <- 0.05
   myT<-read.table("/Users/young/Documents/GitHub/advstatistics-labs/labs/lab10/nc101_scaff_dataCounts.txt",sep="\t",header=TRUE,row.names=1)
@@ -14,16 +14,21 @@ onewayanova <- function(threshold=0.05)
     colSum = sum(myT[,i])
     myMat[,i] =myTNorm[,i]/colSum
   }
-   for ( i in 1:numRows)
+  for ( i in 1:numRows)
   {
     D2 <- myMat[i, 1:3]; W12 <- myMat[i, 4:6]; W18 <- myMat[i, 7:11]
     data <- c(D2, W12, W18)
-    period <- c(rep("day 2", length(D2)), rep("week 12", length(W12)), rep("week 18", length(W18)))
-    myLm <- lm(data ~ factor(period), x=TRUE)
-    rawPvalues[i] <- anova(myLm)$"Pr(>F)"[1]
-   }
+    periodFull <- c(rep("day 2", length(D2)), rep("week 12", length(W12)), rep("week 18", length(W18)))
+    fullLm <- lm(data ~ factor(periodFull), x=TRUE)
+    periodReduced <- c(rep(2, length(D2)), rep(86, length(W12)), rep(128, length(W18)))
+    reducedLm <- lm(data ~ periodReduced, x = TRUE)
+    fStat = ((sum(reducedLm$residuals^2) - sum(fullLm$residuals^2))   / (reducedLm$df.residual - fullLm$df.residual))/
+            (sum(fullLm$residuals^2) / fullLm$df.residual)
+    pValue <- pf(fStat, (reducedLm$df.residual - fullLm$df.residual),fullLm$df.residual, lower.tail = FALSE )
+    rawPvalues[i] <- pValue
+  }
   cat("# of significant genes at BH FDR-corrected 0.05 threshold:", sum(p.adjust(rawPvalues, method =  "BH") < threshold))
   
   hist(rawPvalues, breaks = 50, main = "Raw P- values (one-way ANOVA)")
-  return (rawPvalues)
+  return (list(pValues=rawPvalues, sourceData=myMat))
 }

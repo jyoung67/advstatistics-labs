@@ -21,7 +21,6 @@ linearanova <- function(threshold=0.05)
     period <- c(rep(2, length(D2)), rep(86, length(W12)), rep(128, length(W18)))
     myLm <- lm(data ~ period, x = TRUE)
     rawPvalues[i] <- anova(myLm)$"Pr(>F)"[1]
-    
   }
   cat("# of significant genes at BH FDR-corrected 0.05 threshold:", sum(p.adjust(rawPvalues, method =  "BH") < threshold))
   

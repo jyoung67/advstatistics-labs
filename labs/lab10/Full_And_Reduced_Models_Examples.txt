@@ -1,0 +1,16 @@
+# Full One-Way Model
+AA <- c(4.3,2.3,4.5,5.6,4.2,3.9,2.8)
+Aa <- c(2.7,2.3,1.9,1.3,1.2,1.8,2.1)
+aa <- c(1.6,0.9,1.1,1.2,2.1,0.5,0.9)
+myData <- c(AA,Aa,aa)
+genotypes <- c( rep("AA",length(AA)), rep("Aa",length(Aa)), rep("aa",length(aa)))
+genotypes <- factor(genotypes)
+myLm <- lm( myData ~ genotypes, x=TRUE)
+
+# Reduced Linear Model
+AA <- c(4.3,2.3,4.5,5.6,4.2,3.9,2.8)
+Aa <- c(2.7,2.3,1.9,1.3,1.2,1.8,2.1)
+aa <- c(1.6,0.9,1.1,1.2,2.1,0.5,0.9)
+myData <- c(AA,Aa,aa)
+genotypes <- c( rep(0,length(AA)), rep(1,length(Aa)), rep(2,length(aa))) 
+myLm <- lm( myData ~ genotypes, x=TRUE)
