@@ -26,7 +26,7 @@ mixedanova <- function(threshold=0.05)
     pValue <- pf(fStat, (reducedLm$df.residual - fullLm$df.residual),fullLm$df.residual, lower.tail = FALSE )
     rawPvalues[i] <- pValue
   }
-  cat("# of significant genes at BH FDR-corrected 0.05 threshold:", sum(p.adjust(rawPvalues, method =  "BH") < threshold))
+  cat("# of significant genes at BH FDR-corrected 0.05 threshold:", sum(p.adjust(rawPvalues, method =  "BH") < threshold), "\n")
   
   hist(rawPvalues, breaks = 50, main = "Raw P- values (Full versus Reduced Model Comparison)", xlab="p-values")
   return (list(pValues=rawPvalues, sourceData=myMat))
