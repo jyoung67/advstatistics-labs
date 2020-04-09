@@ -8,7 +8,7 @@ onewayanova <- function(threshold=0.05)
   myMat <- matrix(nrow=numRows, ncol=numCols)
   rawPvalues <- vector(mode = "numeric", length = numRows)
   
-  for ( i in 1:numCols)
+  for (i in 1:numCols)
   {
     colSum = sum(myT[,i])
     myMat[,i] =myTNorm[,i]/colSum
@@ -21,8 +21,8 @@ onewayanova <- function(threshold=0.05)
     myLm <- lm(data ~ factor(period), x=TRUE)
     rawPvalues[i] <- anova(myLm)$"Pr(>F)"[1]
    }
-  cat("# of significant genes at BH FDR-corrected 0.05 threshold:", sum(p.adjust(rawPvalues, method =  "BH") < threshold))
+  cat("# of significant genes at BH FDR-corrected 0.05 threshold:", sum(p.adjust(rawPvalues, method =  "BH") < threshold), "\n")
   
   hist(rawPvalues, breaks = 50, main = "Raw P- values (one-way ANOVA)")
-  return (rawPvalues)
+  return (list(pValues=rawPvalues, sourceData=myMat))
 }

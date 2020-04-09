@@ -21,7 +21,7 @@ linearanova <- function(threshold=0.05)
     myLm <- lm(data ~ period, x = TRUE)
     rawPvalues[i] <- anova(myLm)$"Pr(>F)"[1]
   }
-  cat("# of significant genes at BH FDR-corrected 0.05 threshold:", sum(p.adjust(rawPvalues, method =  "BH") < threshold))
+  cat("# of significant genes at BH FDR-corrected 0.05 threshold:", sum(p.adjust(rawPvalues, method =  "BH") < threshold), "\n")
   
   hist(rawPvalues, breaks = 50, main = "Raw P- values (linear regression ANOVA)")
   return (list(pValues=rawPvalues, sourceData=myMat))
