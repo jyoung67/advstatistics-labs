@@ -20,7 +20,7 @@ linearanovamostsig <- function()
   scale_x_continuous(breaks=c(2,86,128), labels=c(2, 86, 128), limits=c(0,150)) + 
   theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(),
   panel.background = element_blank(), axis.line = element_line(colour = "black")) + 
-  ggtitle("Most Sig Gene Values for Reduced Model") +
+  ggtitle("Most Sig Gene Values for Two-Paramter Model") +
   xlab("(in days)") + 
   ylab("relative abundance")
 }
