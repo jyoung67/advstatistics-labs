@@ -23,6 +23,6 @@ linearanova <- function(threshold=0.05)
   }
   cat("# of significant genes at BH FDR-corrected 0.05 threshold:", sum(p.adjust(rawPvalues, method =  "BH") < threshold), "\n")
   
-  hist(rawPvalues, breaks = 50, main = "Raw P- values (linear regression ANOVA)")
+  hist(rawPvalues, breaks = 50, main = "Raw P- values (two-parameter model)", xlab="p-values")
   return (list(pValues=rawPvalues, sourceData=myMat))
 }

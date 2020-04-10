@@ -5,5 +5,5 @@ mixedanovamostsig <- function()
   ls <- mixedanova()
   minIndex <- order(ls$pValues)[1]
   cat("Minimum index:", minIndex)
-  boxplot(ls$sourceData[minIndex,]~period, xlab="", ylab="relative abundance", main="Most Sig Gene Values for Model Comparisons")
+  boxplot(ls$sourceData[minIndex,]~period, xlab="category", ylab="relative abundance", main="Most Sig Gene Values for Model Comparisons")
 }
