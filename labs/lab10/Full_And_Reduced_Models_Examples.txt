@@ -6,6 +6,9 @@ myData <- c(AA,Aa,aa)
 genotypes <- c( rep("AA",length(AA)), rep("Aa",length(Aa)), rep("aa",length(aa)))
 genotypes <- factor(genotypes)
 myLm <- lm( myData ~ genotypes, x=TRUE)
+boxplot(myData~genotypes)
+abline(myLm)
+
 
 # Reduced Linear Model
 AA <- c(4.3,2.3,4.5,5.6,4.2,3.9,2.8)
@@ -14,3 +17,90 @@ aa <- c(1.6,0.9,1.1,1.2,2.1,0.5,0.9)
 myData <- c(AA,Aa,aa)
 genotypes <- c( rep(0,length(AA)), rep(1,length(Aa)), rep(2,length(aa))) 
 myLm <- lm( myData ~ genotypes, x=TRUE)
+
+
+D2 <- c(0.0046465930, 0.0042786240, 0.0052264353)
+D86 <- c(0.0022066524, 0.0011839675, 0.0026977781)
+D128 <- c(0.0006587521, 0.0008230116, 0.0008966260, 0.0007596294, 0.0001103910)
+myData <- c(D2,D86,D128)
+genotypes <- c( rep(2,length(D2)), rep(86,length(D86)), rep(128,length(D128))) 
+myLm <- lm( myData ~ genotypes, x=TRUE)
+
+abline(a = 4.787555e-03, b = -3.227283e-05 )
+
+f <- function(x){4.787555e-03 - 3.227283e-05 *x}
+pts <- p(seq(0, 128, .01))
+lines(l, p(l))
+
+abline(l)
+
+f <- function(x){4.787555e-03 - 3.227283e-05 *x}
+pts <- seq(0, 128, .01)
+plot(pts, f(pts))
+
+
+D2 <- c(0.0046465930, 0.0042786240, 0.0052264353)
+D86 <- c(0.0022066524, 0.0011839675, 0.0026977781)
+D128 <- c(0.0006587521, 0.0008230116, 0.0008966260, 0.0007596294, 0.0001103910)
+myData <- c(D2,D86,D128)
+genotypes <- c( rep(2,length(D2)), rep(86,length(D86)), rep(128,length(D128))) 
+#genotypes <- c( rep(0,length(D2)), rep(1,length(D86)), rep(2,length(D128))) 
+bp <- boxplot(myData~genotypes, xlim=c(0,128))
+myLm <- lm( myData ~ genotypes, x=TRUE)
+abline(myLm)
+
+
+0.0046465930 0.0042786240 0.0052264353 0.0022066524 0.0011839675 0.0026977781 0.0006587521
+ [8] 0.0008230116 0.0008966260 0.0007596294 0.0001103910
+
+
+
+
+
+f <- function(x){4.787555e-03 - 3.227283e-05 *x}
+pts <- seq(0, 3, .01)
+plot(pts, f(pts))
+D2 <- c(0.0046465930, 0.0042786240, 0.0052264353)
+D86 <- c(0.0022066524, 0.0011839675, 0.0026977781)
+D128 <- c(0.0006587521, 0.0008230116, 0.0008966260, 0.0007596294, 0.0001103910)
+myData <- c(D2,D86,D128)
+periods<- c( rep(2,length(D2)), rep(86,length(D86)), rep(128,length(D128))) 
+bp <- boxplot(myData ~periods, add = TRUE)
+
+
+D2 <- c(0.0046465930, 0.0042786240, 0.0052264353)
+D86 <- c(0.0022066524, 0.0011839675, 0.0026977781)
+D128 <- c(0.0006587521, 0.0008230116, 0.0008966260, 0.0007596294, 0.0001103910)
+myData <- c(D2,D86,D128)
+periods<- c( rep(2,length(D2)), rep(86,length(D86)), rep(128,length(D128))) 
+bp <- boxplot(myData ~periods)
+myLm <- lm( myData ~ periods)
+abline(myLm)
+
+
+
+
+
+library("ggplot2")
+D2 <- c(0.0046465930, 0.0042786240, 0.0052264353)
+D86 <- c(0.0022066524, 0.0011839675, 0.0026977781)
+D128 <- c(0.0006587521, 0.0008230116, 0.0008966260, 0.0007596294, 0.0001103910)
+myData <- c(D2,D86,D128)
+periods<- c( rep(2,length(D2)), rep(86,length(D86)), rep(128,length(D128))) 
+dat <- data.frame(
+  x = periods,
+  y = myData 
+)
+
+coefs <- coef(lm(y ~ x, data = dat))
+
+bp <- ggplot(dat, aes(x, y, group = x)) + geom_boxplot() 
+
+bp + geom_abline(intercept = coefs[1], slope = coefs[2]) + scale_x_continuous(breaks=c(2,86,128), labels=c(2, 86, 128), limits=c(0,150)) + theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(),
+panel.background = element_blank(), axis.line = element_line(colour = "black")) + ggtitle("Most Significant Gene Values for Reduced Model") +
+  xlab("Days") + ylab("relative abundance")
+
+
+
+
+
