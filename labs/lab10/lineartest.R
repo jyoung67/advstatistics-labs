@@ -1,4 +1,4 @@
-linearanovamostsig <- function()
+lineartest <- function()
 {
   source('~/GitHub/advstatistics-labs/labs/lab10/linearanova.R')
   periods <- c(rep(2, 3), rep(86, 3), rep(128, 5))
@@ -18,4 +18,7 @@ linearanovamostsig <- function()
   model <- lm(myData ~ periods, x = TRUE)
   # Add regression line to box plot
   abline(model)
+  
+  return (model)
+ 
 }
