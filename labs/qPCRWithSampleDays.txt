@@ -1,0 +1,131 @@
+sampleNum	SampleDate	sampleDays	Exacerbation	FEV1	treatmentStatus	antibioticstatus	Inhaled_prophylactic_Antibiotic	OralAntibiotic	IVAntibiotic	Log16S	LogPseudo	LogBurk
+1	02/28/09	-1.1574074143538837E-8	1	NA	Before Treament	No acute antibiotic	NA	NA	NA	9.496	8.921	7.715
+2	03/07/09	10.0	1	NA	Before Treament	No acute antibiotic	NA	NA	NA	8.973	8.595	7.233
+3	03/10/09	13.0	1	NA	Before Treament	No acute antibiotic	NA	NA	NA	9.292	8.879	7.485
+4	03/11/09	14.0	1	NA	Before Treament	No acute antibiotic	NA	NA	NA	9.271	8.972	7.52
+5	03/15/09	18.0	1	NA	Treatment	Acute antibiotic	NA	Cipro+Bactrim	NA	8.416	8.462	6.833
+6	03/20/09	23.0	1	NA	Treatment	Acute antibiotic	NA	Cipro+Bactrim	NA	7.484	8.068	6.116
+7	03/25/09	28.0	1	NA	Treatment	Acute antibiotic	TOBI	Cipro+Bactrim	NA	6.962	7.619	5.16
+8	04/01/09	34.0	1	NA	Treatment	Acute antibiotic	TOBI	Cipro+Bactrim	NA	7.656	8.468	6.152
+9	04/05/09	38.0	1	NA	Treatment	Acute antibiotic	TOBI	Cipro+Bactrim	NA	8.622	8.738	6.942
+10	04/10/09	43.0	1	NA	Recovery	No acute antibiotic	TOBI	NA	NA	8.022	8.392	6.818
+11	04/11/09	44.0	1	NA	Recovery	No acute antibiotic	TOBI	NA	NA	9.009	9.049	7.536
+12	04/18/09	51.0	1	NA	Recovery	No acute antibiotic	TOBI	NA	NA	9.249	8.838	7.455
+13	05/25/09	89.0	2	NA	Before Treament	No acute antibiotic	NA	NA	NA	8.631	8.87	6.863
+14	05/26/09	90.0	2	NA	Before Treament	No acute antibiotic	NA	NA	NA	8.793	8.895	7.601
+15	06/18/09	112.0	2	NA	Before Treament	No acute antibiotic	TOBI	NA	NA	7.839	7.893	6.586
+16	06/21/09	115.0	2	NA	Before Treament	No acute antibiotic	TOBI	NA	NA	9.368	9.175	7.179
+17	06/22/09	116.0	2	1.36	Before Treament	No acute antibiotic	TOBI	NA	NA	9.343	9.14	7.218
+18	06/26/09	120.0	2	1.43	Treatment	Acute antibiotic	TOBI	Cipro+Bactrim	NA	8.34	8.85	7.254
+19	06/27/09	121.0	2	1.42	Treatment	Acute antibiotic	NA	Cipro+Bactrim	NA	7.199	7.71	5.756
+20	06/28/09	122.0	2	1.57	Recovery	No acute antibiotic	NA	NA	NA	8.934	9.066	6.981
+21	07/25/09	150.0	2	1.47	Recovery	No acute antibiotic	NA	NA	NA	9.474	8.976	8.12
+22	07/26/09	151.0	2	1.42	Recovery	No acute antibiotic	NA	NA	NA	9.341	9.043	7.729
+23	08/12/09	168.0	NA	1.43	stable	No acute antibiotic	TOBI	NA	NA	8.82	8.837	7.412
+24	08/17/09	173.0	NA	NA	stable	No acute antibiotic	NA	NA	NA	8.717	8.593	7.39
+25	09/14/09	200.0	NA	NA	stable	No acute antibiotic	NA	NA	NA	9.317	9.073	6.641
+26	10/15/09	232.0416717529297	3	NA	Before Treament	No acute antibiotic	NA	NA	NA	9.621	9.158	7.966
+27	10/19/09	236.0416717529297	3	NA	Before Treament	No acute antibiotic	NA	NA	NA	9.187	9.288	7.536
+28	10/22/09	239.04165649414062	3	NA	Before Treament	No acute antibiotic	NA	NA	NA	8.983	8.792	6.895
+29	11/03/09	250.0416717529297	3	NA	Before Treament	No acute antibiotic	NA	NA	NA	8.306	8.243	6.69
+30	11/05/09	252.0416717529297	3	NA	Treatment	Acute antibiotic	NA	Cipro	NA	8.034	9.341	6.599
+31	11/09/09	256.0416564941406	3	NA	Treatment	Acute antibiotic	NA	Cipro	NA	9.22	9.497	6.888
+32	11/12/09	259.0416564941406	3	NA	Treatment	Acute antibiotic	NA	Cipro	NA	7.148	7.365	6.191
+33	11/16/09	263.0416564941406	3	NA	Treatment	Acute antibiotic	NA	Cipro+Bactrim	NA	9.385	9.73	7.152
+34	11/21/09	268.0416564941406	3	NA	Treatment	Acute antibiotic	NA	Bactrim	NA	8.529	8.688	6.923
+35	11/28/09	275.0416564941406	3	NA	Treatment	Acute antibiotic	NA	Bactrim	NA	9.365	9.165	7.062
+36	12/01/09	279.0416564941406	3	NA	Recovery	No acute antibiotic	NA	NA	NA	8.47	8.945	5.504
+37	12/26/09	304.0416564941406	4	NA	Before Treament	No acute antibiotic	NA	NA	NA	8.645	8.833	6.029
+38	12/30/09	308.0416564941406	4	NA	Before Treament	No acute antibiotic	NA	NA	NA	9.177	9.508	7.056
+39	01/07/10	316.0416564941406	4	NA	Treatment	Acute antibiotic	TOBI	Cipro + Mino	Ceftazidime	8.844	8.805	7.628
+40	01/11/10	320.0416564941406	4	NA	Treatment	Acute antibiotic	TOBI	Cipro + Mino	Ceftazidime	8.108	8.035	7.355
+41	01/14/10	323.0416564941406	4	NA	Treatment	Acute antibiotic	TOBI	Cipro + Mino	Ceftazidime	9.375	9.539	7.666
+42	01/23/10	332.0416564941406	4	NA	Treatment	Acute antibiotic	NA	NA	NA	8.846	6.774	7.438
+43	02/01/10	338.0416564941406	4	NA	Recovery	No acute antibiotic	NA	NA	NA	9.698	9.773	7.856
+44	02/07/10	344.0416564941406	4	NA	Recovery	No acute antibiotic	NA	NA	NA	8.834	8.846	6.997
+45	02/14/10	351.0	4	NA	Recovery	No acute antibiotic	NA	NA	NA	9.731	9.336	7.918
+46	03/21/10	389.0	5	NA	Before Treament	No acute antibiotic	NA	NA	NA	9.76	9.163	7.664
+47	03/28/10	396.0	5	NA	Before Treament	No acute antibiotic	NA	NA	NA	9.147	8.85	8.125
+48	04/12/10	410.0000305175781	5	NA	Treatment	Acute antibiotic	TOBI	Cipro+Bactrim	NA	8.351	8.249	6.999
+49	04/24/10	421.9999694824219	5	NA	Treatment	Acute antibiotic	TOBI	Cipro+Bactrim	NA	8.858	8.69	7.672
+50	05/03/10	432.0	5	NA	Recovery	No acute antibiotic	TOBI	NA	NA	8.742	8.973	7.421
+51	05/17/10	445.9999694824219	5	NA	Recovery	No acute antibiotic	NA	NA	NA	9.413	9.796	8.166
+52	05/24/10	453.0	NA	NA	stable	No acute antibiotic	NA	NA	NA	8.428	9.178	6.741
+53	05/27/10	456.0	NA	NA	stable	No acute antibiotic	NA	NA	NA	9.511	9.944	7.345
+54	06/08/10	467.0	6	NA	Before Treament	No acute antibiotic	Cayston	NA	NA	8.394	8.711	7.257
+55	06/15/10	474.0000305175781	6	NA	Before Treament	No acute antibiotic	Cayston	NA	NA	9.278	9.055	8.193
+56	06/23/10	482.0000305175781	6	NA	Before Treament	No acute antibiotic	Cayston	NA	NA	8.592	9.319	7.352
+57	07/01/10	491.0	6	NA	Before Treament	No acute antibiotic	Cayston	NA	NA	9.698	10.227	8.448
+58	07/09/10	499.0	6	NA	Treatment	Acute antibiotic	Cayston	Mino	NA	9.573	9.923	8.424
+59	07/11/10	501.0	6	NA	Treatment	Acute antibiotic	Cayston	Mino	NA	9.958	10.352	8.137
+60	07/13/10	503.0	6	NA	Treatment	Acute antibiotic	Cayston	Mino	NA	9.424	9.548	8.134
+61	07/14/10	504.0	6	1.34	Treatment	Acute antibiotic	Cayston	Mino	NA	8.871	9.499	7.634
+62	07/15/10	505.0	6	NA	Treatment	Acute antibiotic	Cayston	Mino	NA	8.873	9.298	7.889
+63	07/25/10	515.0	6	1.35	Recovery	No acute antibiotic	Cayston	NA	NA	9.68	10.252	8.324
+64	08/03/10	524.0	6	NA	Recovery	No acute antibiotic	Cayston	NA	NA	10.066	10.78	8.442
+65	08/20/10	541.0	6	NA	Recovery	No acute antibiotic	Cayston	NA	NA	9.904	10.406	8.236
+66	09/09/10	560.0	NA	NA	stable	No acute antibiotic	Cayston	NA	NA	8.94	10.471	8.567
+67	10/05/10	587.0	NA	1.36	stable	No acute antibiotic	Cayston	NA	NA	9.655	10.374	7.821
+68	10/09/10	591.0416870117188	NA	NA	stable	No acute antibiotic	Cayston	NA	NA	9.536	10.266	8.384
+69	10/21/10	603.0416870117188	NA	NA	stable	No acute antibiotic	Cayston	NA	NA	9.018	9.983	7.443
+70	11/10/10	622.0416259765625	NA	NA	stable	No acute antibiotic	Cayston	NA	NA	9.616	10.211	7.959
+71	11/18/10	630.0416259765625	NA	NA	stable	No acute antibiotic	Cayston	NA	NA	9.197	9.877	7.519
+72	12/23/10	666.0416259765625	NA	NA	stable	No acute antibiotic	Cayston	NA	NA	9.543	10.421	8.34
+73	12/28/10	671.0416870117188	NA	NA	stable	No acute antibiotic	Cayston	NA	NA	9.325	9.902	7.628
+74	01/03/11	677.0416870117188	NA	1.32	stable	No acute antibiotic	Cayston	NA	NA	8.983	9.747	6.791
+75	01/08/11	682.0416259765625	NA	NA	stable	No acute antibiotic	Cayston	NA	NA	8.669	9.532	7.584
+76	01/21/11	695.0416870117188	NA	NA	stable	No acute antibiotic	Cayston	NA	NA	9.798	10.475	8.287
+77	02/01/11	703.0416870117188	7	NA	Before Treament	No acute antibiotic	Cayston	NA	NA	9.292	10.015	7.629
+78	02/15/11	717.0	7	NA	Before Treament	No acute antibiotic	Cayston	NA	NA	9.675	10.168	8.368
+79	02/23/11	725.0	7	1.43	Before Treament	No acute antibiotic	Cayston	NA	NA	9.228	9.833	7.986
+80	03/03/11	736.0	7	NA	Treatment	Acute antibiotic	Cayston	Mino	NA	8.75	9.706	7.6
+81	03/04/11	737.0	7	NA	Treatment	Acute antibiotic	Cayston	Mino	NA	9.379	10.141	8.226
+82	03/08/11	741.0	7	1.46	Treatment	Acute antibiotic	Cayston	Mino	NA	9.24	9.919	8.207
+83	03/19/11	752.0	7	NA	Recovery	No acute antibiotic	Cayston	NA	NA	9.477	10.435	8.03
+84	04/09/11	772.0	7	NA	Recovery	No acute antibiotic	Cayston	NA	NA	9.126	10.084	8.757
+85	04/20/11	783.0	NA	NA	stable	No acute antibiotic	Cayston	NA	NA	8.673	9.644	7.448
+86	05/03/11	796.9999389648438	NA	NA	stable	No acute antibiotic	Cayston	NA	NA	9.114	10.082	7.78
+87	05/26/11	820.0000610351562	NA	NA	stable	No acute antibiotic	Cayston	NA	NA	9.39	10.342	7.404
+88	05/30/11	824.0	NA	NA	stable	No acute antibiotic	Cayston	NA	NA	8.757	10.04	8.273
+89	06/07/11	831.0	NA	1.39	stable	No acute antibiotic	Cayston	NA	NA	8.506	9.497	7.465
+90	06/08/11	832.0	NA	NA	stable	No acute antibiotic	Cayston	NA	NA	8.951	9.657	8.006
+91	06/17/11	841.0	NA	NA	stable	No acute antibiotic	NA	NA	NA	9.14	9.872	7.927
+92	06/22/11	846.0	8	NA	Before Treament	No acute antibiotic	NA	NA	NA	9.74	10.346	9.034
+93	06/27/11	851.0000610351562	8	1.32	Before Treament	No acute antibiotic	NA	NA	NA	9.553	10.142	8.479
+94	07/09/11	864.0	8	NA	Before Treament	No acute antibiotic	NA	NA	NA	8.971	10.025	7.861
+95	07/14/11	868.9999389648438	8	1.32	Before Treament	No acute antibiotic	NA	NA	NA	8.904	9.873	7.999
+96	07/16/11	871.0	8	NA	Before Treament	No acute antibiotic	NA	NA	NA	9.657	10.449	7.997
+97	07/17/11	872.0	8	1.37	Before Treament	No acute antibiotic	NA	NA	NA	9.418	10.272	8.344
+98	07/20/11	875.0000610351562	8	1.31	Before Treament	No acute antibiotic	NA	NA	NA	9.487	9.808	8.801
+99	07/27/11	882.0	8	NA	Treatment	Acute antibiotic	NA	Mino	Ceftazidime	9.236	10.124	8.446
+100	07/29/11	884.0000610351562	8	NA	Treatment	Acute antibiotic	NA	Cipro+Mino	Ceftazidime	9.437	9.406	8.796
+101	07/31/11	886.0	8	1.34	Treatment	Acute antibiotic	NA	Cipro+Mino	Ceftazidime	8.9	8.923	8.602
+102	08/01/11	887.0	8	1.36	Treatment	Acute antibiotic	NA	Cipro+Mino	Ceftazidime	8.657	8.626	8.393
+103	08/05/11	891.0000610351562	8	NA	Recovery	No acute antibiotic	TOBI	NA	NA	8.813	9.739	8.38
+104	08/07/11	892.9999389648438	8	NA	Recovery	No acute antibiotic	TOBI	NA	NA	9.441	9.706	8.774
+105	08/12/11	898.0	8	NA	Recovery	No acute antibiotic	TOBI	NA	NA	8.518	8.735	7.874
+106	08/17/11	903.0	8	1.44	Recovery	No acute antibiotic	TOBI	NA	NA	8.403	9.214	7.804
+107	08/25/11	911.0	8	1.44	Recovery	No acute antibiotic	TOBI	NA	NA	10.034	10.081	9.152
+108	09/02/11	918.0	8	NA	Recovery	No acute antibiotic	Cayston	NA	NA	10.061	9.356	9.434
+109	09/10/11	926.0	NA	NA	stable	No acute antibiotic	Cayston	NA	NA	9.514	9.751	7.48
+110	09/30/11	946.0	NA	NA	stable	No acute antibiotic	NA	NA	NA	9.67	9.898	8.517
+111	10/15/11	962.0416259765625	NA	NA	stable	No acute antibiotic	TOBI	NA	NA	9.911	9.955	9.107
+112	10/23/11	970.0416259765625	NA	NA	stable	No acute antibiotic	TOBI	NA	NA	9.782	10.118	8.463
+113	11/06/11	983.0416870117188	NA	NA	stable	No acute antibiotic	Cayston	NA	NA	9.607	9.756	8.057
+114	11/19/11	996.0416870117188	9	NA	Before Treament	No acute antibiotic	Cayston	NA	NA	9.339	9.372	8.109
+115	11/22/11	999.0416870117188	9	NA	Before Treament	No acute antibiotic	Cayston	NA	NA	9.943	9.77	9.101
+116	12/01/11	1009.0416259765625	9	NA	Before Treament	No acute antibiotic	Cayston	NA	NA	8.974	9.465	8.027
+117	12/04/11	1012.0416870117188	9	NA	Before Treament	No acute antibiotic	NA	NA	NA	9.892	9.926	9.043
+118	12/06/11	1014.0416870117188	9	NA	Before Treament	No acute antibiotic	NA	NA	NA	9.674	9.746	8.749
+119	12/09/11	1017.0416259765625	9	NA	Before Treament	No acute antibiotic	NA	NA	NA	9.889	9.55	9.291
+120	12/10/11	1018.0416259765625	9	NA	Before Treament	No acute antibiotic	NA	NA	NA	9.464	9.77	8.642
+121	12/12/11	1020.0416870117188	9	NA	Before Treament	No acute antibiotic	NA	NA	NA	10.188	9.925	8.974
+122	12/13/11	1021.0416870117188	9	NA	Before Treament	No acute antibiotic	TOBI	NA	NA	10.331	9.719	9.539
+123	12/22/11	1030.041748046875	9	NA	Treatment	Acute antibiotic	Cayston	Mino	NA	9.607	9.835	8.609
+124	12/23/11	1031.041748046875	9	NA	Treatment	Acute antibiotic	Cayston	Mino	NA	8.931	8.791	8.805
+125	12/26/11	1034.0416259765625	9	NA	Treatment	Acute antibiotic	Cayston	Mino	NA	9.247	9.189	8.466
+126	01/02/12	1041.0416259765625	9	NA	Treatment	Acute antibiotic	Cayston	Mino	NA	9.802	9.642	8.811
+127	01/04/12	1043.0416259765625	9	NA	Treatment	Acute antibiotic	Cayston	Mino	NA	9.836	9.525	9.055
+128	01/12/12	1051.0416259765625	9	NA	Recovery	No acute antibiotic	Cayston	NA	NA	9.915	9.422	9.697
+129	01/20/12	1059.0416259765625	9	NA	Recovery	No acute antibiotic	NA	NA	NA	9.593	9.541	9.046
+130	01/24/12	1063.041748046875	9	1.37	Recovery	No acute antibiotic	NA	NA	NA	9.617	9.645	8.625
