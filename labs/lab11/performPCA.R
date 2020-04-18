@@ -1,5 +1,6 @@
 performPCA <- function()
 {
+  source('~/GitHub/advstatistics-labs/labs/lab11/getColorVector.R')
   
   inFileName <- "http://afodor.github.io/classes/stats2015/prePostPhylum.txt"
   
@@ -13,7 +14,15 @@ performPCA <- function()
     matSubAvg[,i] <- mean(myTData[,i]) - myTData[,i]
   }
   
-  return(list(rawData=myT, pcoaData=myPCOA, avgMat=matSubAvg))
+  cageColors <- getColorVector(myT$cage)
+  genotypeColors <- getColorVector(myT$genotype)
+  timeColors <- getColorVector(myT$time)
+  
+  plot(myPCOA$scores[,1:2], col=cageColors, main = "PCA:  Cage Type")
+  plot(myPCOA$scores[,1:2], col=genotypeColors, main = "PCA:  Genotype")
+  plot(myPCOA$scores[,1:2], col=timeColors, main = "PCA:  Time")
+  
+  
+  
+  return(list(rawData=myT, pcoaData=myPCOA, avgMat=matSubAvg, cageColors=cageColors, genotypeColors=genotypeColors,timeColors=timeColors))
 }
-
-# colours <- c("black", "blue", "red", "brown", "yellow", "green", "cyan", "gray", "purple", "pink", "orange")
