@@ -15,3 +15,5 @@ performPCA <- function()
   
   return(list(rawData=myT, pcoaData=myPCOA, avgMat=matSubAvg))
 }
+
+# colours <- c("black", "blue", "red", "brown", "yellow", "green", "cyan", "gray", "purple", "pink", "orange")
