@@ -12,8 +12,8 @@ getPValues <- function(pcaoData, rawDataInput)
   genotypePCA1_2 <- pcaoData$scores[,1][which(rawDataInput$genotype == genotypes[2])]
   genotypePCA2_1 <- pcaoData$scores[,2][which(rawDataInput$genotype == genotypes[1])]
   genotypePCA2_2 <- pcaoData$scores[,2][which(rawDataInput$genotype == genotypes[2])]
-  pValueGenotypePCA1 <- t.test(genotypePCA1_1, genotypePCA1_1)$p.value
-  pValueGenotypePCA2 <- t.test(genotypePCA2_1, genotypePCA2_1)$p.value
+  pValueGenotypePCA1 <- t.test(genotypePCA1_1, genotypePCA1_2)$p.value
+  pValueGenotypePCA2 <- t.test(genotypePCA2_1, genotypePCA2_2)$p.value
   
   # Get pvalues for time types ('PRE' or 'POST')
   timeTypes <- as.vector(unique(rawDataInput$time))

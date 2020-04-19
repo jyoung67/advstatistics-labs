@@ -23,6 +23,7 @@ performPCA <- function()
   plot(myPCOA$scores[,1:2], col=cageColors, main = "PCA:  Cage", xlab="PCA1", ylab="PCA2")
   abline(a = 0, b = eigen(cov(matSubAvg))$vectors[2,2]/eigen(cov(matSubAvg))$vectors[1,2], col="black")
   plot(myPCOA$scores[,1:2], col=genotypeColors, main = "PCA:  Genotype ('WT'/'10-/-)'", xlab="PCA1", ylab="PCA2")
+  abline(a = 0, b = eigen(cov(matSubAvg))$vectors[2,2]/eigen(cov(matSubAvg))$vectors[1,2], col="black")
   plot(myPCOA$scores[,1:2], col=timeColors, main = "PCA:  Time ('pre'/'post')", xlab="PCA1", ylab="PCA2")
   abline(a = 0, b = eigen(cov(matSubAvg))$vectors[2,1]/eigen(cov(matSubAvg))$vectors[1,1], col="green")
   
