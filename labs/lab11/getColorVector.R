@@ -1,7 +1,7 @@
 getColorVector <- function(input)
 {
   colours_12 <- c("blue", "red", "black", "brown", "yellow", "green", "orange", "cyan", "gray", "purple", "pink", "tan")
-  uniqueValues <- unique(input)
+  uniqueValues <- as.vector(unique(input))
   result <- vector(mode = "character", length = length(input))
   
   for(i in 1:length(uniqueValues))

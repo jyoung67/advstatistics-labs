@@ -15,13 +15,14 @@ performPCA <- function()
   }
   
   # Generate color vectors
-  cageColors <- getColorVector(myT$cage)
+  cageColors <- getColorVector(as.vector(myT$cage))
   genotypeColors <- getColorVector(myT$genotype)
   timeColors <- getColorVector(myT$time)
-  
+  shapes <- ifelse(myT$time == "PRE", 0, 1)
   # Generate plots
-  plot(myPCOA$scores[,1:2], col=cageColors, main = "PCA:  Cage", xlab="PCA1", ylab="PCA2")
-  abline(a = 0, b = eigen(cov(matSubAvg))$vectors[2,2]/eigen(cov(matSubAvg))$vectors[1,2], col="black")
+  plot(myPCOA$scores[,1:2], col=cageColors, main = "PCA:  Cage", xlab="PCA1", ylab="PCA2", pch=shapes)
+  legend(0, 2, legend=c("PRE", "POST"), col=c("blue", "red"), pch=c(0,1), cex=0.7,title="Time Period", text.font=7)
+  #abline(a = 0, b = eigen(cov(matSubAvg))$vectors[2,2]/eigen(cov(matSubAvg))$vectors[1,2], col="black")
   plot(myPCOA$scores[,1:2], col=genotypeColors, main = "PCA:  Genotype ('WT'/'10-/-)'", xlab="PCA1", ylab="PCA2")
   abline(a = 0, b = eigen(cov(matSubAvg))$vectors[2,2]/eigen(cov(matSubAvg))$vectors[1,2], col="black")
   plot(myPCOA$scores[,1:2], col=timeColors, main = "PCA:  Time ('pre'/'post')", xlab="PCA1", ylab="PCA2")

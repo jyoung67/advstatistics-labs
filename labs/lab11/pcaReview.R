@@ -7,13 +7,11 @@ pcaReview <- function()
   x <- x - mean(x)
   y <- y - mean(y)
   
-  plot(x,y)
+  plot(x,y, xlim=c(-2,2), ylim=c(-2,2))
   cv <- function(x,y){sum((x-mean(x)) * (y-mean(y)))/(length(x) - 1)}
   covm <- cbind(c(cv(x,x), cv(y,x)), c(cv(x,y), cv(y,y))); covm
   result <- eigen(covm)
   abline(a = 0, b = result$vectors[2,1]/result$vectors[1,1])
   abline(a = 0, b = result$vectors[2,2]/result$vectors[1,2])
   return (result)
-  
-  # sqrt(sum(result$vectors[,1]^2))
 }
