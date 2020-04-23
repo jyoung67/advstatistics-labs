@@ -1,5 +1,6 @@
 createMixedLinearModels <- function()
 {
+  
   source('~/GitHub/advstatistics-labs/labs/Lab12/getIndexesForNominals.R')
   
   # Read/transform data
@@ -14,35 +15,34 @@ createMixedLinearModels <- function()
   Proteobacteria <- as.vector(myT$Proteobacteria)
   cage <- as.vector(myT$cage)
   genotype <-as.vector(myT$genotype)
+  cageIndexes <- getIndexesForNominals(cage)
   myList <- list(Tenericutes=Tenericutes, Verrucomicrobia=Verrucomicrobia, Bacteroidetes=Bacteroidetes,
                         Actinobacteria=Actinobacteria, Firmicutes=Firmicutes, Proteobacteria=Proteobacteria,
-                        cage=cage, genotype=genotype)
-  
+                        cage=cage, genotype=genotype, cageIndexes=cageIndexes$indexVector)
   op <- par(mfrow = c(3,2))
-  plotIndexes <- getIndexesForNominals(cage)
-  tmarksAt <- seq(1,11, by=1)
-  plot(plotIndexes$indexVector, Tenericutes, main="Tenericutes", ylab = "abundance", xaxt="none", xlab="")
-  axis(side=1, at=tmarksAt, labels=FALSE)
-  text(tmarksAt, par("usr")[3] - 0.75, labels = plotIndexes$uniqueLabelVector, srt = 270, pos = 1, xpd = TRUE, cex =.8)
+  xlabText <- "cage ref #"
+  ylabText <- "abundance"
+ 
+  boxplot(Tenericutes~cageIndexes$indexVector,xlab = xlabText, ylab = ylabText, main = "Tenericutes by Cage")
+  stripchart(Tenericutes~cageIndexes$indexVector, vertical=TRUE, pch=21, add=TRUE)
   
-  
-  # plot(plotIndexes$indexVector, Verrucomicrobia, main="Verrucomicrobia", ylab = "abundance", xlab = "cage")
-  # axis(1, at=1:11, labels=1:11)
-  # 
-  # plot(plotIndexes$indexVector, Bacteroidetes, main="Bacteroidetes", ylab = "abundance", xlab = "cage")
-  # axis(1, at=1:11, labels=1:11)
-  # 
-  # plot(plotIndexes$indexVector, Actinobacteria, main="Actinobacteria", ylab = "abundance", xlab = "cage")
-  # axis(1, at=1:11, labels=1:11)
-  # 
-  # plot(plotIndexes$indexVector, Firmicutes, main="Firmicutes", ylab = "abundance", xlab = "cage")
-  # axis(1, at=1:11, labels=1:11)
-  # 
-  # plot(plotIndexes$indexVector, Proteobacteria, main="Proteobacteria", ylab = "abundance", xlab = "cage")
-  # axis(1, at=1:11, labels=1:11)
-  
-  par(op)
-  
+  boxplot(Verrucomicrobia~cageIndexes$indexVector,xlab = xlabText, ylab = ylabText, main = "Verrucomicrobia by Cage")
+  stripchart(Verrucomicrobia~cageIndexes$indexVector, vertical=TRUE, pch=21, add=TRUE)
+
+  boxplot(Bacteroidetes~cageIndexes$indexVector,xlab = xlabText, ylab = ylabText, main = "Bacteroidetes by Cage")
+  stripchart(Bacteroidetes~cageIndexes$indexVector, vertical=TRUE, pch=21, add=TRUE)
+
+  boxplot(Actinobacteria~cageIndexes$indexVector,xlab = xlabText, ylab = ylabText, main = "Actinobacteria by Cage")
+  stripchart(Actinobacteria~cageIndexes$indexVector, vertical=TRUE, pch=21, add=TRUE)
+
+  boxplot(Firmicutes~cageIndexes$indexVector,xlab = xlabText, ylab = ylabText, main = "Firmicutes by Cage")
+  stripchart(Firmicutes~cageIndexes$indexVector, vertical=TRUE, pch=21, add=TRUE)
+
+  boxplot(Proteobacteria~cageIndexes$indexVector,xlab = xlabText, ylab = ylabText, main = "Proteobacteria by Cage")
+  stripchart(Proteobacteria~cageIndexes$indexVector, vertical=TRUE, pch=21, add=TRUE)
+
+par(op)
+
   
   return(myList)
 }

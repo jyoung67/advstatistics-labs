@@ -7,5 +7,6 @@ getIndexesForNominals <- function(inputVector)
     indexVector[which(inputVector == uniqueLabelVector[i])] <- i
   }
   
-  return(list(indexVector=indexVector, uniqueLabelVector=uniqueLabelVector))
+  trimmedUniqueLabelVector <- sapply(uniqueLabelVector, gsub, pattern = "Cage", replacement ="C")
+  return(list(indexVector=indexVector, uniqueLabelVector=trimmedUniqueLabelVector))
 }
