@@ -1,6 +1,6 @@
 SquidData_4.1 <- function()
 {
-  Squid <- read.table(file = "~/GitHub/advstatistics-labs/Mixed_Effects_Models_Book/Squid.txt", header = TRUE, dec = ".") 
+  Squid <- read.table(file = "~/GitHub/advstatistics-labs/Mixed_Effects_Models_Book/ZuurDataMixedModelling/Squid.txt", header = TRUE, dec = ".") 
   Squid$fMONTH <- factor(Squid$MONTH)
   Ml <- lm(Testisweight ~ DML *fMONTH, data = Squid, x=TRUE)
   # The following line is equivalent to the preceding line
