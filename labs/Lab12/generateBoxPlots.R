@@ -1,4 +1,4 @@
-getStatistics <- function()
+generateBoxPlots <- function()
 {
   source('~/GitHub/advstatistics-labs/labs/Lab12/getIndexesForNominals.R')
   

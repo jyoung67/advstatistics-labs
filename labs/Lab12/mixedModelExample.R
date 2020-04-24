@@ -1,0 +1,75 @@
+mixedModelExample <- function()
+{
+library("nlme")
+
+
+numHospitalsPerGroup <- 3
+sampleSize <- 5
+
+getSimData <- function()
+{
+  index <- 1
+  hospitalIndex <-1
+  drugIndex <-1
+  data <- vector()
+  hospital <- vector()
+  drug <- vector()
+  
+  for( i in 1:(numHospitalsPerGroup*2))
+  {
+    hospitalEffect <- rnorm( 1,mean=0, sd=50)
+    
+    for( j in 1:sampleSize)
+    {
+      data[index] <- rnorm(1,mean=hospitalEffect , sd=50)
+      hospital[index] <- paste("H", hospitalIndex , sep="")
+      drug[index] <- paste("D", drugIndex,sep="")
+      index <- index + 1
+    }
+    
+    hospitalIndex <- hospitalIndex + 1
+    drugIndex <- drugIndex + 1
+    
+    if( drugIndex > 2 ) 
+      drugIndex = 1
+  }
+  
+  myT <- data.frame(data,hospital,drug)
+  
+}
+
+pValuesFixed <- vector()
+pValuesGLS <- vector()
+pValuesMixed <- vector()
+
+index <- 1
+
+for (i in 1:1000)
+{
+  myT<- getSimData()
+  myLm <- lm( myT$data ~ myT$drug + myT$hospital)
+  pValuesFixed[index] <- anova(myLm)$"Pr(>F)"[1]	
+  
+  M.gls <- gls( data ~ drug , method = "REML", correlation = corCompSymm( form = ~ 1 | hospital),data=myT)
+  pValuesGLS[index] <- anova(M.gls)$"p-value"[2]
+  
+  M.mixed <- lme( data ~ drug, method= "REML", random = ~1 | hospital, data = myT)
+  pValuesMixed[index] <- anova(M.mixed)$"p-value"[2]
+  
+  index = index + 1
+}
+
+par(mfrow=c(2,3))
+
+hist(pValuesFixed)
+hist(pValuesGLS)
+hist(pValuesMixed)
+
+library("gap")
+qqunif(pValuesFixed)
+qqunif(pValuesGLS)
+qqunif(pValuesMixed)
+
+return(list(lme=M.mixed, gls= M.gls))
+
+}
