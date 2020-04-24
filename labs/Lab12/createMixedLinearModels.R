@@ -16,7 +16,7 @@ createMixedLinearModels <- function()
   cage <- as.vector(myT$cage)
   genotype <-as.vector(myT$genotype)
   cageIndexes <- getIndexesForNominals(cage)
-  myList <- list(Tenericutes=Tenericutes, Verrucomicrobia=Verrucomicrobia, Bacteroidetes=Bacteroidetes,
+  myList <- data.frame(Tenericutes=Tenericutes, Verrucomicrobia=Verrucomicrobia, Bacteroidetes=Bacteroidetes,
                         Actinobacteria=Actinobacteria, Firmicutes=Firmicutes, Proteobacteria=Proteobacteria,
                         cage=cage, genotype=genotype, cageIndexes=cageIndexes$indexVector)
   op <- par(mfrow = c(3,2))
