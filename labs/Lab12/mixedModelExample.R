@@ -47,7 +47,7 @@ index <- 1
 for (i in 1:1000)
 {
   myT<- getSimData()
-  myLm <- lm( myT$data ~ myT$drug + myT$hospital)
+  myLm <- lm( myT$data ~ myT$drug + myT$hospital, x = TRUE)
   pValuesFixed[index] <- anova(myLm)$"Pr(>F)"[1]	
   
   M.gls <- gls( data ~ drug , method = "REML", correlation = corCompSymm( form = ~ 1 | hospital),data=myT)
@@ -70,6 +70,6 @@ qqunif(pValuesFixed)
 qqunif(pValuesGLS)
 qqunif(pValuesMixed)
 
-return(list(lme=M.mixed, gls= M.gls))
+return(list(lm=myLm,lme=M.mixed, gls= M.gls))
 
 }

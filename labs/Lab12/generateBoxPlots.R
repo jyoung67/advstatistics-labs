@@ -29,7 +29,7 @@ generateBoxPlots <- function()
   for (i in 1:length(columnNames))
   {
     boxplot(bugData[[i]]~xComponent,xlab = "", ylab = ylabText, main = paste(columnNames[i], "by Cage"), names=cageIndexes$uniqueLabelVector, las = 2)
-    stripchart(bugData[[i]]~xComponent, vertical=TRUE, pch=21, add=TRUE)
+    stripchart(bugData[[i]]~xComponent, vertical=TRUE, pch=21,cex=0.8,col="red", add=TRUE)
   }
   par(op)
   

@@ -5,12 +5,12 @@ getLmeStats <- function()
   threshold <- 0.10
   
   # Calculates intraclass correlation coefficient and p-value
-  getStatValues <- function(lmeModel)
+  getStatValues <- function(lmeModel, name)
   {
     varcor <- sapply(VarCorr(lmeModel)[,2], as.double)
     icc <- varcor[1]^2/(varcor[1]^2+ varcor[2]^2)
     pvalue <- unclass(summary(lmeModel))$tTable[2,5]
-    cat("ICC: ", icc, " | ", "p-value: ", pvalue, "\n")
+    cat(name, " intraclass corr coef: ", icc, " | ", "raw p-value: ", pvalue, "\n")
     return (data.frame(icc=icc, pvalue=pvalue))
   }
   
@@ -19,7 +19,6 @@ getLmeStats <- function()
   rawData <-read.table(inFileName,header=TRUE,sep="\t")
   myT <- rawData[rawData$time == "POST",]
   cages <- as.vector(myT$cage)
-  cageIndexes <- getIndexesForNominals(cages)
   genotypes <- as.vector(myT$genotype)
   
   TenericutesDF <- data.frame(bugData=as.vector(myT$Tenericutes), cage=cages, genotype=genotypes)
@@ -36,13 +35,15 @@ getLmeStats <- function()
   Firmicutes.mixed <- lme( bugData ~ genotype, method= "REML", random = ~1 | cage, data = FirmicutesDF)
   Proteobacteria.mixed <- lme( bugData ~ genotype, method= "REML", random = ~1 | cage, data = ProteobacteriaDF)
   
-  TResult <- getStatValues(Tenericutes.mixed)
-  VResult <- getStatValues(Verrucomicrobia.mixed)
-  BResult <- getStatValues(Bacteroidetes.mixed)
-  AResult <- getStatValues(Actinobacteria.mixed)
-  FResult <- getStatValues(Firmicutes.mixed)
-  PResult <- getStatValues(Proteobacteria.mixed)
+  TResult <- getStatValues(Tenericutes.mixed, "Tenericutes")
+  VResult <- getStatValues(Verrucomicrobia.mixed, "Verrucomicrobia")
+  BResult <- getStatValues(Bacteroidetes.mixed, "Bacteroidetes")
+  AResult <- getStatValues(Actinobacteria.mixed, "Actinobacteria")
+  FResult <- getStatValues(Firmicutes.mixed, "Firmicutes")
+  PResult <- getStatValues(Proteobacteria.mixed, "Proteobacteria")
   
+  pvalues <- c(TResult$pvalue, VResult$pvalue, BResult$pvalue, AResult$pvalue, FResult$pvalue, PResult$pvalue)
   
-  cat("Number of significant p-values at 0.10 threshold: ", sum(p.adjust(c(TResult, VResult, BResult, AResult, FResult, PResult), method =  "BH") < threshold))
+  cat("\nNumber of significant BH-FDR adjusted p-values at ", threshold, " threshold: ", sum(p.adjust(pvalues, method =  "BH") < threshold))
+  return (pvalues)
 }
