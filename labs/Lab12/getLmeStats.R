@@ -1,10 +1,9 @@
 getLmeStats <- function()
 {
   library("nlme")
-  source('~/GitHub/advstatistics-labs/labs/Lab12/getIndexesForNominals.R')
   threshold <- 0.10
   
-  # Calculates intraclass correlation coefficient and p-value
+  # Calculate intraclass correlation coefficient & p-value for input lme model
   getStatValues <- function(lmeModel, name)
   {
     varcor <- sapply(VarCorr(lmeModel)[,2], as.double)
@@ -45,5 +44,8 @@ getLmeStats <- function()
   pvalues <- c(TResult$pvalue, VResult$pvalue, BResult$pvalue, AResult$pvalue, FResult$pvalue, PResult$pvalue)
   
   cat("\nNumber of significant BH-FDR adjusted p-values at ", threshold, " threshold: ", sum(p.adjust(pvalues, method =  "BH") < threshold))
+  
+  cat("\n\nAdjusted p-values at 10% FDR:\n", p.adjust(pvalues, method =  "BH"))
+  
   return (pvalues)
 }
