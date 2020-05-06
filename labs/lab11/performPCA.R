@@ -1,7 +1,7 @@
 performPCA <- function()
 {
-  source('~/GitHub/advstatistics-labs/labs/lab11/getColorVector.R')
-  source('~/GitHub/advstatistics-labs/labs/lab11/getPValues.R')
+  source('https://raw.githubusercontent.com/jyoung67/advstatistics-labs/master/labs/lab11/getColorVector.R')
+  source('https://raw.githubusercontent.com/jyoung67/advstatistics-labs/master/labs/lab11/getPValues.R')
   inFileName <- "http://afodor.github.io/classes/stats2015/prePostPhylum.txt"
   
   # Read/transform data
