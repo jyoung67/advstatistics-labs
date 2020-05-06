@@ -6,7 +6,7 @@ performPCATest <- function()
   result <- performPCA()
   
   # Get principle results from source script for comparing with manually calculated values
-  sourcePrincipleComponents <- result$pcoaData$scores
+  sourcePrincipleComponents <- round(result$pcoaData$scores, digits = 4)
   
   # Trim for only numerical columns
   myMat <- data.matrix(result$rawData[,5:10])
@@ -23,16 +23,17 @@ performPCATest <- function()
   covMetaData <- cov(matSubAvg)
   
   # Manually generate principal components matrix 
-  testPrincipleComponents <- matSubAvg %*% eigen(covMetaData)$vectors
+  testPrincipleComponents <- round(matSubAvg %*% eigen(covMetaData)$vectors, digits = 4)
   
   # Calculate differences between sorucePrincipleComponents and testPrincipleComponents
   #  The expected result is zero differences
-  differences <- sum(sourcePrincipleComponents == matSubAvg %*% eigen(covMetaData)$vector)
+  differences <-  sum(!(-1*sourcePrincipleComponents == testPrincipleComponents || sourcePrincipleComponents == testPrincipleComponents ))
   
-  cat("\nThere were ", differences, "between sourcePrincipleComponents and testPrincipleComponents.")
+  cat("\nThere were ", differences, "difference(s) between sourcePrincipleComponents and testPrincipleComponents.")
   
   return(list(eigenVectors=eigen(covMetaData)$vectors, 
               eigenValues=eigen(covMetaData)$values, 
               principleComponents=testPrincipleComponents,
+              sourcePrincipleComponents=sourcePrincipleComponents,
               pcoaSummary = summary(result$pcoaData)))
 }
